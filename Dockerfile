@@ -1,17 +1,19 @@
-FROM ros:melodic-ros-base
+FROM ros:noetic-ros-base
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 SHELL ["/bin/bash", "-c"]
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y \
+    curl \
     python3-pip \
     python3-dev \
     nodejs \
 	python3-setuptools \
 	python3-venv \
 	python3-wheel
+
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 
 # Install ROS dependencies for building packages
 #RUN apt-get update && \
